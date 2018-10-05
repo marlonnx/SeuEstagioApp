@@ -1,0 +1,7 @@
+{
+  "name": "SeuEstagio",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
