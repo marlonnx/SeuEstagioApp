@@ -1,17 +1,35 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="secondary" text-center>
     <ion-title>
-      Contact
+      Contato
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+<ion-content padding>
+  <div  *ngIf="show;else temp1" padding-top>
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Mensagem</ion-label>
+        <ion-textarea type="text"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <button ion-button icon-end full (click)="func()">
+      Enviar
+      <ion-icon name="ios-send"></ion-icon>
+
+    </button>
+  </div>
+
+  <ng-template #temp1>
+      <ion-title text-center padding-top margin-top>
+         Mensagem Enviada
+        </ion-title>
+  </ng-template>
 </ion-content>

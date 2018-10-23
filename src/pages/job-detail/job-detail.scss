@@ -1,3 +1,19 @@
 page-job-detail {
-
+    .detail {
+     /*    border-width: 2px;
+        border-style: solid;
+        border-color: color($colors, danger);
+        border-radius: 5px; */
+        color: white;
+    }
+    .bg{
+        background-image: url('http://www.dream-wallpaper.com/free-wallpaper/art-wallpaper/green-design-1-wallpaper/1280x800/free-wallpaper-27.jpg');
+          /* Full height */
+        height: 100%; 
+    
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }

@@ -1,13 +1,19 @@
 page-home {
     .image {
         border-radius: 5px;
-        width: 100px;
         height: 75px;
+        width: 100px;
     }
     .card{
-        background-color: #fffcd9;
+      
+       // background-color: #fffcd9;
+       background-image: url('http://papers.co/wallpaper/papers.co-vm26-poly-art-abstract-green-pattern-29-wallpaper.jpg')
+        
     }
     .font {
         font-size: 1.2em;
+    }
+    .card-footer{
+        bottom: 0;
     }
 }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="danger">
+  <ion-navbar color="secondary">
     <ion-title text-center>Últimas vagas</ion-title>
   </ion-navbar>
 </ion-header>
@@ -54,42 +54,19 @@
   </ion-list>
  -->
 
-
-  <ion-card class="card" (click)="goDetail()">
+  <ion-card class="card" (click)="goDetail()" *ngFor="let item of hotJobs">
     <ion-card-header text-center class="font">
-      Vendedor Interno
+     {{item.jobTitle}}
     </ion-card-header>
     <ion-card-content ion-row>
-      <div col-6>
-        <img src="../../assets/imgs/cisco-logo.jpg" class="image">
-      </div>
-      <div col-6 no-padding>
-        MANPOWER STAFFING. (BH)
-        Comercial, Vendas - Venda Interna
-      </div>
-      <div col-12>
-        13/09 09:25 - Belo Horizonte, MG
+      <div col-12 no-padding text-center>
+        {{item.jobDescription}}
       </div>
     </ion-card-content>
-  </ion-card>
-
-  <ion-card class="card" (click)="goDetail()" >
-    <ion-card-header text-center class="font">
-      Estagio Cursando Direito - Belo Horizonte
-    </ion-card-header>
-    <ion-card-content ion-row>
-      <div col-6>
-        <img src="../../assets/imgs/cisco-logo.jpg" class="image">
-      </div>
-      <div col-6 no-padding>
-        Futura Estágios
-
-        Jurídica - Trabalhista
-      </div>
-      <div col-12>
-
-        13/09 09:25 - Belo Horizonte, MG
-      </div>
-    </ion-card-content>
+    <ion-row>
+      <ion-col center text-center  >
+        {{item.jobCreatedAt}}
+      </ion-col>
+    </ion-row>
   </ion-card>
 </ion-content>
