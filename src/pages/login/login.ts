@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home'
+import { SignupPage } from '../signup/signup'
 
 /**
  * Generated class for the LoginPage page.
@@ -52,6 +53,10 @@ export class LoginPage {
       () => this.navCtrl.setRoot(HomePage),
       error => console.log(error.message)
     );
-  } 
+  }
+  
+  signup() {
+    this.navCtrl.push(SignupPage);
+  }
 
 }
