@@ -6,6 +6,8 @@ import { MyApp } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { firebaseConfig } from '../config';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -18,6 +20,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { JobDetailPage } from '../pages/job-detail/job-detail';
 import { JobCategoryPage } from '../pages/job-category/job-category';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { CreateJobPage } from '../pages/create-job/create-job';
+import { JobProvider } from '../providers/job/job';
+
 
 @NgModule({
   declarations: [
@@ -28,13 +33,15 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     JobCategoryPage,
     TabsPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    CreateJobPage,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig.fire)
+    AngularFireModule.initializeApp(firebaseConfig.fire),
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,14 +51,17 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     JobDetailPage,
     JobCategoryPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    CreateJobPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    AngularFireAuth
+    AngularFireAuth,
+    JobProvider
   ]
 })
 export class AppModule {}
