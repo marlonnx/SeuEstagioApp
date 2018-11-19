@@ -8,11 +8,11 @@ export const firebaseConfig = {
     messagingSenderId: "45686537784"
   } */
   fire: {
-    apiKey: "AIzaSyBVl4DEKPpA9VqUxmRGmzCNmrH1J36sTfM",
-    authDomain: "seuestagio-fd8b5.firebaseapp.com",
-    databaseURL: "https://seuestagio-fd8b5.firebaseio.com",
-    projectId: "seuestagio-fd8b5",
-    storageBucket: "seuestagio-fd8b5.appspot.com",
-    messagingSenderId: "354734956339"
+    apiKey: 'AIzaSyBVl4DEKPpA9VqUxmRGmzCNmrH1J36sTfM',
+    authDomain: 'seuestagio-fd8b5.firebaseapp.com',
+    databaseURL: 'https://seuestagio-fd8b5.firebaseio.com',
+    projectId: 'seuestagio-fd8b5',
+    storageBucket: 'seuestagio-fd8b5.appspot.com',
+    messagingSenderId: '354734956339'
   }
 }

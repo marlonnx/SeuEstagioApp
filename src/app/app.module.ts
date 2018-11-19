@@ -13,7 +13,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup'
+import { SignupPage } from '../pages/signup/signup';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,7 +22,12 @@ import { JobCategoryPage } from '../pages/job-category/job-category';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { CreateJobPage } from '../pages/create-job/create-job';
 import { JobProvider } from '../providers/job/job';
-
+import { CurriculumPage } from '../pages/curriculum/curriculum';
+import { JobListPage } from '../pages/job-list/job-list';
+import localePtBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePtBr);
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 @NgModule({
   declarations: [
@@ -35,13 +40,22 @@ import { JobProvider } from '../providers/job/job';
     LoginPage,
     SignupPage,
     CreateJobPage,
+    CurriculumPage,
+    JobListPage,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+        'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      monthShortNames: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+
+    }),
     AngularFireModule.initializeApp(firebaseConfig.fire),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrMaskerModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,15 +67,18 @@ import { JobProvider } from '../providers/job/job';
     TabsPage,
     LoginPage,
     CreateJobPage,
-    SignupPage
+    SignupPage,
+    CurriculumPage,
+    JobListPage,
   ],
   providers: [
+
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthServiceProvider,
     AngularFireAuth,
     JobProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

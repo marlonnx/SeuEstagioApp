@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HomePage } from '../home/home'
+import { HomePage } from '../home/home';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { User } from '../../Model/user.model';
 
 /**
  * Generated class for the SignupPage page.
@@ -21,10 +23,12 @@ export class SignupPage {
   signupError: string;
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, private auth: AuthServiceProvider, public navParams: NavParams, fb: FormBuilder) {
+  constructor(private db: AngularFirestore, public navCtrl: NavController,
+    private auth: AuthServiceProvider, public navParams: NavParams, fb: FormBuilder) {
     this.form = fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      type: [null, Validators.required]
     });
   }
 
@@ -33,13 +37,23 @@ export class SignupPage {
   }
 
   signup() {
-    let data = this.form.value;
-    let credentials = {
+    const data = this.form.value;
+    const credentials = {
       email: data.email,
       password: data.password
     };
     this.auth.signUp(credentials).then(
-      () => this.navCtrl.setRoot(HomePage),
+      (r) => {
+
+        const user: User = {
+          'id': r.user.uid,
+          'email': r.user.email,
+          'type': data.type
+        };
+        this.db.doc<User>('users/' + r.user.uid).set(user);
+
+        this.navCtrl.setRoot(HomePage);
+      },
       error => this.signupError = error.message);
   }
 

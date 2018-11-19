@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home'
 import { SignupPage } from '../signup/signup'
+import { AngularFirestore } from 'angularfire2/firestore';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -21,9 +23,9 @@ export class LoginPage {
   loginForm: FormGroup;
   loginError: string;
 
-  constructor( private navCtrl: NavController, private auth: AuthServiceProvider, fb: FormBuilder) {
+  constructor(private db: AngularFirestore, private navCtrl: NavController, private auth: AuthServiceProvider, fb: FormBuilder) {
     this.loginForm = fb.group({
-      email: ['', Validators.compose([Validators.required,Validators.email])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required,
       Validators.minLength(6)])]
     });
@@ -33,7 +35,7 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  login(){
+  login() {
     let data = this.loginForm.value;
     if (!data.email) {
       return;
@@ -43,18 +45,20 @@ export class LoginPage {
       password: data.password
     };
     this.auth.signInWithEmail(credentials).then(
-      () => this.navCtrl.setRoot(HomePage),
+      () => {
+        this.navCtrl.setRoot(HomePage);
+      },
       error => this.loginError = error.message
     );
   }
-  
+
   loginWithGoogle() {
     this.auth.signInWithGoogle().then(
       () => this.navCtrl.setRoot(HomePage),
       error => console.log(error.message)
     );
   }
-  
+
   signup() {
     this.navCtrl.push(SignupPage);
   }

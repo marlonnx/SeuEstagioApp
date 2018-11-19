@@ -22,6 +22,13 @@
       <ion-item>
         <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select formControlName="type">
+          <ion-option value="1" >Empresa</ion-option>
+          <ion-option value="2" >Estágiario</ion-option>
+        </ion-select>
+      </ion-item>
     </ion-list>
     <div padding-horizontal>
       <div class="form-error">{{signupError}}</div>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Job } from '../../Model/job.model'
+import { Job } from '../../Model/job.model';
 import { AuthServiceProvider } from '../auth-service/auth-service';
 import { Item } from 'ionic-angular';
 /*
@@ -13,14 +13,13 @@ import { Item } from 'ionic-angular';
 @Injectable()
 export class JobProvider {
 
-  constructor(public firestore: AngularFirestore, private auth:
-    AuthServiceProvider) { }
+  constructor(public firestore: AngularFirestore, private auth: AuthServiceProvider) { }
   createJob(item: any): Promise<void> {
     let id = this.firestore.createId();
-    let job:Job = {
-      "id": id,
-      "userEmail": this.auth.getEmail(),
-      "date": new Date().toISOString(),
+    let job = {
+      'id': id,
+      'userEmail': this.auth.getEmail(),
+      'date': new Date().toISOString(),
       'title': item.title,
       'local': item.local,
       'description': item.description,
@@ -29,14 +28,20 @@ export class JobProvider {
       'benefits': item.benefits,
       'closed': false,
       'closedDate': '',
-    }
-    return this.firestore.doc<Job>(`jobsList/${id}`).set(job)
+      'uid': this.auth.getUid(),
+    };
+
+    return this.firestore.doc<Job>(`jobsList/${id}`).set(job);
   }
 
   getJobList(): AngularFirestoreCollection<Job> {
     return this.firestore.collection(`jobsList`, ref => ref
-    .where('userEmail', '==', this.auth.getEmail()).orderBy('date',
-    "desc"));
-
+      .where('userEmail', '==', this.auth.getEmail()).orderBy('date',
+        'desc'));
   }
+
+  getAllJobs(): AngularFirestoreCollection<Job> {
+    return this.firestore.collection(`jobsList`);
+  }
+
 }

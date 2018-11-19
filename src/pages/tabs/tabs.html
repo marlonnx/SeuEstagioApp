@@ -1,5 +1,12 @@
-<ion-tabs color="secondary">
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Categorias" tabIcon="md-list-box"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
+<ion-tabs color="secondary" *ngIf="(userData | async)?.type === '1'">
+  <ion-tab [root]="tab2Root" tabTitle="Minhas Vagas" tabIcon="md-list-box"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Contato" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Criar Vaga" tabIcon="create"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="Curriculo" tabIcon="contact"></ion-tab>
+</ion-tabs>
+
+<ion-tabs color="secondary" *ngIf="(userData | async)?.type === '2'">
+  <ion-tab [root]="tab5Root" tabTitle="Curriculo" tabIcon="user"></ion-tab>
+  <ion-tab [root]="tab6Root" tabTitle="Categorias" tabIcon="md-list-box"></ion-tab>
+  <ion-tab [root]="tab7Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
 </ion-tabs>

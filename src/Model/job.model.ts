@@ -11,6 +11,7 @@ class Job {
         public benefits: string,
         public closed: boolean,
         public closedDate: string,
+        public uid: string,
     ) { }
 }
 export { Job }
