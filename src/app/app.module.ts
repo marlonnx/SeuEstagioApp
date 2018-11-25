@@ -28,6 +28,8 @@ import localePtBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localePtBr);
 import { BrMaskerModule } from 'brmasker-ionic-3';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CpfCnpjValidatorDirective } from '../validators/cpf-cnpj.validator.directive';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
     CreateJobPage,
     CurriculumPage,
     JobListPage,
+    CpfCnpjValidatorDirective,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,8 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
     AngularFireModule.initializeApp(firebaseConfig.fire),
     AngularFirestoreModule,
     BrMaskerModule,
+    FormsModule,
+    ReactiveFormsModule,
 
   ],
   bootstrap: [IonicApp],

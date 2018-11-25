@@ -13,7 +13,7 @@ import { User } from '../../Model/user.model';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',

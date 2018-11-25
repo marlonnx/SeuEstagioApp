@@ -14,7 +14,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',

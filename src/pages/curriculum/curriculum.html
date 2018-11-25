@@ -74,11 +74,7 @@
         <ion-label floating>LinkedIn</ion-label>
         <ion-input type="text" formControlName="linkedin"></ion-input>
       </ion-item>
-      <ion-item no-lines *ngIf="form.controls['social'].get('linkedin').touched && (form.controls['social'].get('linkedin').hasError('required') )">
-        <p>
-          Esse campo é obrigatório.
-        </p>
-      </ion-item>
+      
     </ion-list>
   </form>
 </ion-content>

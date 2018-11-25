@@ -15,4 +15,4 @@ export const firebaseConfig = {
     storageBucket: 'seuestagio-fd8b5.appspot.com',
     messagingSenderId: '354734956339'
   }
-}
+};

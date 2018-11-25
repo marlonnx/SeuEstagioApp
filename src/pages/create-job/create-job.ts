@@ -13,7 +13,7 @@ import { JobProvider } from '../../providers/job/job';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-create-job',
   templateUrl: 'create-job.html',
@@ -21,9 +21,10 @@ import { JobProvider } from '../../providers/job/job';
 export class CreateJobPage {
   form: FormGroup;
   categories: Observable<any>;
-  constructor(public jobProvider: JobProvider, public fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public db: AngularFirestore) {
+  constructor(public jobProvider: JobProvider, public fb: FormBuilder,
+    public navCtrl: NavController, public navParams: NavParams, public db: AngularFirestore) {
     this.categories = this.db.collection('categories').valueChanges();
-    
+
     this.form = fb.group({
       'title': [null, Validators.required],
       'local': [null, Validators.required],
@@ -35,11 +36,11 @@ export class CreateJobPage {
   }
 
   ionViewDidLoad() {
-    
+
   }
 
   submit(form) {
-    
-    this.jobProvider.createJob(form).then(() => console.log('success'))
+
+    this.jobProvider.createJob(form).then(() => console.log('success'));
   }
 }
